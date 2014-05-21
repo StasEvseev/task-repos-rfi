@@ -1,6 +1,10 @@
 #coding: utf-8
 
-from man.models import Man
 from django.contrib import admin
+from man.models import Man
 
-admin.site.register(Man)
+class ManAdmin(admin.ModelAdmin):
+    fields = ('name', 'follow_ids')
+    list_display = ('name', 'follow_ids')
+
+admin.site.register(Man, ManAdmin)
